@@ -1,8 +1,19 @@
-const Message = ({ text }) => {
+import { Card, CardContent, Typography } from "@material-ui/core";
+
+import "./Message.css";
+
+const Message = ({ text, username }) => {
+  const isUser = username === text.username;
   return (
-    <>
-      <h3>{text}</h3>
-    </>
+    <div className={`message ${isUser && "message_user"}`}>
+      <Card className={isUser ? "message_userCard" : "message_guestCard"}>
+        <CardContent>
+          <Typography color="white" varient="h5" component="h2">
+            {username}: {text.input}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
