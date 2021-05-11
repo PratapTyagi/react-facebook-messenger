@@ -1,4 +1,36 @@
 .app {
   text-align: center;
-  margin: 0 auto;
+}
+
+.app > h1 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.app_logo {
+  width: 200px;
+  height: 200px;
+}
+
+.app_form {
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: #e9e9eb;
+  width: 92%;
+  margin: 20px;
+}
+
+.app_formControl {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.app_input {
+  flex: 1;
+}
+
+.app_iconButton {
+  flex: 0;
 }

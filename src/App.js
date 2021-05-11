@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
+import { IconButton, FormControl, Input, InputLabel } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
 
 import firebase from "firebase";
 import db from "./firebase";
@@ -7,6 +8,7 @@ import FlipMove from "react-flip-move";
 
 import Message from "./componets/Message";
 import "./App.css";
+import LOGO from "./ascets/logo.png";
 
 const App = () => {
   const [input, setinput] = useState("");
@@ -41,24 +43,27 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Basic Input using state.</h1>
-      <form>
-        <FormControl>
-          <InputLabel>Enter message</InputLabel>
+      <img src={LOGO} className="app_logo" />
+      <h1>Messenger</h1>
+      <form className="app_form">
+        <FormControl className="app_formControl">
           <Input
+            className="app_input"
+            placeholder="Enter a message"
             type="text"
             value={input}
             onChange={(e) => setinput(e.target.value)}
           />
-          <Button
+          <IconButton
+            className="app_iconButton"
             variant="contained"
             color="primary"
             type="submit"
             onClick={sendMessage}
             disabled={!input}
           >
-            Send
-          </Button>
+            <SendIcon />
+          </IconButton>
         </FormControl>
       </form>
 
