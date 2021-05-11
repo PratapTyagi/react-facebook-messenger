@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
 
 import Message from "./componets/Message";
+import db from "./firebase";
 
 import "./App.css";
 
@@ -9,6 +10,15 @@ const App = () => {
   const [input, setinput] = useState("");
   const [messages, setmessages] = useState([]);
   const [username, setusername] = useState("");
+
+  useEffect(() => {
+    const fromFirebase = async () => {
+      await db.collection("messages").onSnapshot((snapshot) => {
+        setmessages(snapshot.docs.map((doc) => doc.data()));
+      });
+    };
+    fromFirebase();
+  }, []);
 
   useEffect(() => {
     setusername(prompt("Enter your username"));
@@ -20,6 +30,7 @@ const App = () => {
     setinput("");
   };
 
+  console.log(messages);
   return (
     <div className="app">
       <h1>Basic Input using state.</h1>

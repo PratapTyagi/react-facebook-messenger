@@ -9,7 +9,7 @@ const Message = ({ text, username }) => {
       <Card className={isUser ? "message_userCard" : "message_guestCard"}>
         <CardContent>
           <Typography color="white" varient="h5" component="h2">
-            {username}: {text.input}
+            {text.username}: {text.message}
           </Typography>
         </CardContent>
       </Card>
